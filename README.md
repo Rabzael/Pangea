@@ -20,3 +20,4 @@ My beloved wife and my wonderful kids, who let me some spare time here and there
 ### Go
 - [Go by Example](https://gobyexample.com/) contains all you need to learn/refresh Go
 - Then the [http package docs](https://pkg.go.dev/net/http@go1.25.2) is mandatory
+- Alex Rios, [_System Programming Essentials with Go_](https://www.packtpub.com/en-it/product/system-programming-essentials-with-go-9781801813440), Packt Publishing 2024

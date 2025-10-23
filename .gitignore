@@ -3,3 +3,4 @@ cache
 docker
 etl
 ids
+stress-client
