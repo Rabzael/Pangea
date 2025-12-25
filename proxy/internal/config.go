@@ -10,6 +10,7 @@ type ConfigData struct {
 	Http_port         int
 	Cache_ttl_seconds int
 	Blacklist         []string
+	Log_filename      string
 }
 
 /** Configuration data */

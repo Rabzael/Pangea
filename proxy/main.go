@@ -20,6 +20,9 @@ func main() {
 		panic(err)
 	}
 
+	// Initialize logger
+	internal.InitLogger()
+
 	// Start server
 	exitSig := make(chan os.Signal, 1)
 	signal.Notify(exitSig, syscall.SIGINT, syscall.SIGTERM)
@@ -28,10 +31,13 @@ func main() {
 		err := http.ListenAndServe(":"+strconv.Itoa(internal.Config.Http_port), http.HandlerFunc(internal.ProxyHandler))
 		if err != nil && err != http.ErrServerClosed {
 			log.Fatalf("%v", err)
+			internal.CloseLogger()
+			os.Exit(1)
 		}
 	}()
 
 	log.Printf("Listening HTTP on port %d...\n", internal.Config.Http_port)
 	<-exitSig
 	log.Printf("Shutting down...")
+	internal.CloseLogger()
 }
