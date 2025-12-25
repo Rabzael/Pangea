@@ -4,6 +4,7 @@ import (
 	"io"
 	"net"
 	"net/http"
+	"net/url"
 )
 
 /** General handler **/
@@ -20,7 +21,7 @@ func ProxyHandler(w http.ResponseWriter, req *http.Request) {
 	if well_done {
 		LogOk(req, result.(*http.Response))
 	} else {
-		LogError(req, result.(error))
+		LogError(req, result.(*url.Error).Err)
 	}
 }
 
@@ -44,7 +45,6 @@ func ForwardProxyHandler(w http.ResponseWriter, req *http.Request) (bool, any) {
 	}
 	if error != nil {
 		http.Error(w, error.Error(), http.StatusInternalServerError)
-		go LogError(req, error)
 		return false, error
 	}
 
@@ -72,7 +72,6 @@ func HttpsProxyHandler(w http.ResponseWriter, req *http.Request) (bool, any) {
 	if !done {
 		http.Error(w, "Can't hijack", http.StatusInternalServerError)
 		req.Close = true
-		go LogError(req, http.ErrNotSupported)
 		return false, http.ErrNotSupported
 	}
 
