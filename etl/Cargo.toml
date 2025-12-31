@@ -1,0 +1,12 @@
+[package]
+name = "etl"
+edition = "2024"
+
+[dependencies]
+arrow = "57.1.0"
+arrow-json = "57.1.0"
+serde_json = "1.0.147"
+
+[[bin]]
+name = "dev"
+path = "src/etl.rs"
