@@ -18,7 +18,12 @@ Each module is containerized using Docker for ease of deployment. Kubernetes is 
 
 1. Proxy receives client requests and manages them, logging all traffic. Logs are sent to the message broker.
 2. ETL module consumes logs from the message broker and processes them.
-3. Processed logs are stored in a structured format for analysis and sent back to the message broker.
+3. Processed logs are stored in a structured format for analysis and sent back to the message broker 
+
+> "Stream processor" pattern: ETL is in the middle of the pipeline both consuming and producing messages.
+>
+>```Proxy --> [Topic "raw-logs"] --> ETL --> [Topic "processed-logs"] --> Agent```
+
 4. Agent module consumes processed logs from the message broker for AI-based analysis.
 
 ## Usage Instructions
