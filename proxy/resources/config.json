@@ -1,4 +1,7 @@
 {
   "http_port": 5173,
-  "log_filename": "logs/proxy.log"
+  "log_filename": "logs/proxy2.log",
+  "Kafka_enabled": false,
+	"Kafka_brokers": "localhost:9092",
+	"Kafka_topic": "raw-logs"
 }

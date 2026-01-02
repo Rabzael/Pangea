@@ -11,6 +11,9 @@ type ConfigData struct {
 	Cache_ttl_seconds int
 	Blacklist         []string
 	Log_filename      string
+	Kafka_enabled     bool
+	Kafka_brokers     string
+	Kafka_topic       string
 }
 
 /** Configuration data */
